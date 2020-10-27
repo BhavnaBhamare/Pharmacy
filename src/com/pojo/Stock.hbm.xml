@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2019 12:00:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Stock" table="stock" catalog="pharmacyproject">
+        <id name="sid" type="java.lang.Integer">
+            <column name="sid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="supplier" class="com.pojo.Supplier" fetch="select">
+            <column name="supid" />
+        </many-to-one>
+        <property name="mcompany" type="string">
+            <column name="mcompany" length="100" />
+        </property>
+        <property name="mname" type="string">
+            <column name="mname" length="100" />
+        </property>
+        <property name="mdescription" type="string">
+            <column name="mdescription" length="1000" />
+        </property>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="quantity" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="price" precision="22" scale="0" />
+        </property>
+        <property name="mdate" type="string">
+            <column name="mdate" length="100" />
+        </property>
+        <property name="edate" type="string">
+            <column name="edate" length="100" />
+        </property>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stockid" />
+            </key>
+            <one-to-many class="com.pojo.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2019 12:00:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Supplier" table="supplier" catalog="pharmacyproject">
+        <id name="supid" type="java.lang.Integer">
+            <column name="supid" />
+            <generator class="identity" />
+        </id>
+        <property name="sname" type="string">
+            <column name="sname" length="100" />
+        </property>
+        <property name="smobile" type="string">
+            <column name="smobile" length="100" />
+        </property>
+        <property name="semail" type="string">
+            <column name="semail" length="100" />
+        </property>
+        <property name="saddress" type="string">
+            <column name="saddress" length="100" />
+        </property>
+        <set name="stocks" table="stock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="supid" />
+            </key>
+            <one-to-many class="com.pojo.Stock" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2019 12:00:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Order" table="order" catalog="pharmacyproject">
+        <id name="oid" type="java.lang.Integer">
+            <column name="oid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="stock" class="com.pojo.Stock" fetch="select">
+            <column name="stockid" />
+        </many-to-one>
+        <many-to-one name="customer" class="com.pojo.Customer" fetch="select">
+            <column name="cid" />
+        </many-to-one>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="quantity" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="price" precision="22" scale="0" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
